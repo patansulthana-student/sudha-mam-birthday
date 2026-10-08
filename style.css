@@ -1,0 +1,1656 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    min-height: 100vh;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    color: #3d3030;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   COMMON SCREEN
+========================= */
+
+.screen {
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+/* =========================
+   OPENING SCREEN
+========================= */
+
+.opening-screen {
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff8ef,
+            #f9eee2,
+            #f5e4d5
+        );
+}
+
+
+.india-symbol {
+
+    font-size: 70px;
+
+    animation: float 3s ease-in-out infinite;
+}
+
+
+.small-text {
+
+    margin-top: 15px;
+
+    font-size: 20px;
+
+    letter-spacing: 2px;
+
+    opacity: 0;
+
+    animation: fadeIn 1.5s ease forwards;
+}
+
+
+h1 {
+
+    margin: 20px 0;
+
+    font-size: clamp(38px, 6vw, 65px);
+
+    font-weight: normal;
+
+    line-height: 1.15;
+
+    opacity: 0;
+
+    animation: fadeIn 1.5s ease 0.5s forwards;
+}
+
+
+.story-text {
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+    opacity: 0;
+
+    animation: fadeIn 1.5s ease 1.2s forwards;
+}
+
+
+.distance-text {
+
+    margin-top: 25px;
+
+    font-size: 17px;
+
+    font-style: italic;
+
+    opacity: 0;
+
+    animation: fadeIn 1.5s ease 2s forwards;
+}
+
+
+.dubai-text {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    opacity: 0;
+
+    animation: fadeIn 1.5s ease 2.7s forwards;
+}
+
+
+button {
+
+    margin-top: 35px;
+
+    padding: 15px 30px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #3d3030;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-family: inherit;
+
+    cursor: pointer;
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+    opacity: 0;
+
+    animation: fadeIn 1.5s ease 3.4s forwards;
+}
+
+
+button:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================
+   JOURNEY SCREEN
+========================= */
+
+.journey-screen {
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            180deg,
+            #dff3ff,
+            #f9f4e9
+        );
+
+    transition: opacity 1s ease;
+}
+
+
+.screen.hidden {
+    display: none !important;
+}
+
+
+/* =========================
+   INDIA / DUBAI LABELS
+========================= */
+
+.journey-title,
+.destination {
+
+    position: absolute;
+
+    top: 25%;
+
+}
+
+
+.journey-title {
+
+    left: 8%;
+}
+
+
+.destination {
+
+    right: 8%;
+}
+
+
+.journey-title p,
+.destination p {
+
+    margin: 0;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+}
+
+
+.journey-title h2,
+.destination h2 {
+
+    margin-top: 10px;
+
+    font-size: 30px;
+}
+
+
+/* =========================
+   FLIGHT AREA
+========================= */
+
+.flight-area {
+
+    position: relative;
+
+    width: 75%;
+
+    height: 150px;
+
+    display: flex;
+
+    align-items: center;
+}
+
+
+.flight-area::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    top: 50%;
+
+    border-top: 2px dashed rgba(61, 48, 48, 0.35);
+}
+
+
+#airplane {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        rotate(0deg);
+
+    font-size: 55px;
+
+    z-index: 2;
+
+    transition:
+        left 5s cubic-bezier(
+            0.4,
+            0,
+            0.2,
+            1
+        );
+}
+
+
+/* =========================
+   CLOUDS
+========================= */
+
+.cloud {
+
+    position: absolute;
+
+    font-size: 40px;
+
+    opacity: 0.7;
+
+    animation: cloudMove 8s linear infinite;
+}
+
+
+.cloud-one {
+
+    top: 10px;
+
+    left: 20%;
+}
+
+
+.cloud-two {
+
+    top: 80px;
+
+    left: 65%;
+
+    animation-delay: 3s;
+}
+
+
+/* =========================
+   JOURNEY MESSAGE
+========================= */
+
+.journey-message {
+
+    position: absolute;
+
+    bottom: 15%;
+
+    font-size: 20px;
+
+    font-style: italic;
+
+    opacity: 0;
+
+    animation:
+        fadeIn 2s ease 1s forwards;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+}
+
+
+@keyframes float {
+
+    0%,
+    100% {
+
+        transform: translateY(0);
+
+    }
+
+    50% {
+
+        transform: translateY(-10px);
+
+    }
+}
+
+
+@keyframes cloudMove {
+
+    from {
+
+        transform: translateX(-20px);
+
+    }
+
+    to {
+
+        transform: translateX(20px);
+
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+
+        font-size: 40px;
+
+    }
+
+    .story-text {
+
+        font-size: 17px;
+
+    }
+
+    .journey-title {
+
+        left: 5%;
+
+    }
+
+    .destination {
+
+        right: 5%;
+
+    }
+
+    .journey-title h2,
+    .destination h2 {
+
+        font-size: 20px;
+
+    }
+
+    #airplane {
+
+        font-size: 40px;
+
+    }
+
+}
+/* =========================
+   DUBAI SCREEN
+========================= */
+
+.dubai-screen {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #101a38 0%,
+            #1e315b 55%,
+            #d69b72 100%
+        );
+
+    color: white;
+
+}
+
+
+/* =========================
+   STARS
+========================= */
+
+.stars {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 55%;
+
+}
+
+
+.stars span {
+
+    position: absolute;
+
+    font-size: 22px;
+
+    animation: twinkle 2s ease-in-out infinite;
+
+}
+
+
+.stars span:nth-child(1) {
+
+    top: 15%;
+
+    left: 15%;
+
+}
+
+
+.stars span:nth-child(2) {
+
+    top: 25%;
+
+    left: 35%;
+
+    animation-delay: .5s;
+
+}
+
+
+.stars span:nth-child(3) {
+
+    top: 12%;
+
+    left: 65%;
+
+    animation-delay: 1s;
+
+}
+
+
+.stars span:nth-child(4) {
+
+    top: 32%;
+
+    left: 80%;
+
+    animation-delay: .3s;
+
+}
+
+
+.stars span:nth-child(5) {
+
+    top: 18%;
+
+    left: 90%;
+
+    animation-delay: 1.2s;
+
+}
+
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+
+        opacity: .3;
+
+        transform: scale(.8);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform: scale(1.2);
+
+    }
+
+}
+
+
+/* =========================
+   DUBAI TEXT
+========================= */
+
+.dubai-content {
+
+    position: absolute;
+
+    top: 12%;
+
+    z-index: 5;
+
+}
+
+
+.dubai-flag {
+
+    font-size: 55px;
+
+}
+
+
+.arrival-small {
+
+    margin: 10px 0;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    opacity: .8;
+
+}
+
+
+.dubai-content h1 {
+
+    margin: 10px 0;
+
+    font-size: clamp(38px, 6vw, 65px);
+
+    animation: none;
+
+    opacity: 1;
+
+}
+
+
+.arrival-message {
+
+    font-size: 18px;
+
+    font-style: italic;
+
+}
+
+
+/* =========================
+   SKYLINE
+========================= */
+
+.skyline {
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 35%;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    gap: 8px;
+
+}
+
+
+/* Buildings */
+
+.building {
+
+    background: rgba(20, 24, 38, .9);
+
+    width: 9%;
+
+    border-radius: 2px 2px 0 0;
+
+}
+
+
+.building-one {
+
+    height: 45%;
+
+}
+
+
+.building-two {
+
+    height: 65%;
+
+}
+
+
+/* Burj Khalifa */
+
+.burj-khalifa {
+
+    position: relative;
+
+    width: 10%;
+
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+
+.tower-body {
+
+    width: 65%;
+
+    height: 90%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9da8b8,
+            #e4e9ef,
+            #8e99aa
+        );
+
+    clip-path: polygon(
+        40% 0,
+        60% 0,
+        70% 15%,
+        80% 35%,
+        65% 100%,
+        35% 100%,
+        20% 35%,
+        30% 15%
+    );
+
+}
+
+
+.spire {
+
+    width: 3px;
+
+    height: 10%;
+
+    background: #dce3eb;
+
+}
+
+
+.building-three {
+
+    height: 55%;
+
+}
+
+
+.building-four {
+
+    height: 40%;
+
+}
+
+
+/* =========================
+   SURPRISE BOX
+========================= */
+
+.surprise-box {
+
+    position: absolute;
+
+    bottom: 7%;
+
+    z-index: 10;
+
+}
+
+
+.surprise-box p {
+
+    margin: 5px;
+
+    font-size: 17px;
+
+}
+
+
+.surprise-box .waiting-text {
+
+    font-size: 21px;
+
+    font-weight: bold;
+
+}
+
+
+.surprise-box button {
+
+    margin-top: 18px;
+
+    background: white;
+
+    color: #3d3030;
+
+    opacity: 1;
+
+    animation: none;
+
+}
+
+
+.surprise-box button:hover {
+
+    background: #f5e4d5;
+
+}
+
+
+/* =========================
+   MOBILE DUBAI
+========================= */
+
+@media (max-width: 600px) {
+
+    .dubai-content h1 {
+
+        font-size: 38px;
+
+    }
+
+    .arrival-message {
+
+        font-size: 15px;
+
+        padding: 0 20px;
+
+    }
+
+    .skyline {
+
+        height: 30%;
+
+    }
+
+    .surprise-box {
+
+        bottom: 5%;
+
+    }
+
+    .surprise-box p {
+
+        font-size: 14px;
+
+    }
+
+}
+/* =========================
+   BIRTHDAY SCREEN
+========================= */
+
+.birthday-screen {
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #fff5e8,
+            #f7dfe0 45%,
+            #ead8e8 100%
+        );
+
+    color: #3d3030;
+
+}
+
+
+/* =========================
+   BIRTHDAY CONTENT
+========================= */
+
+.birthday-content {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 750px;
+
+    padding: 30px;
+
+    animation:
+        birthdayAppear 1.5s ease forwards;
+
+}
+
+
+.birthday-icon {
+
+    font-size: 80px;
+
+    animation:
+        birthdayFloat 2.5s ease-in-out infinite;
+
+}
+
+
+.birthday-small {
+
+    margin-top: 15px;
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    opacity: .65;
+
+}
+
+
+.birthday-content h1 {
+
+    margin: 20px 0;
+
+    font-size: clamp(
+        42px,
+        7vw,
+        75px
+    );
+
+    line-height: 1.1;
+
+    font-weight: normal;
+
+    opacity: 1;
+
+    animation: none;
+
+}
+
+
+.birthday-line {
+
+    width: 80px;
+
+    height: 2px;
+
+    margin: 25px auto;
+
+    background: #3d3030;
+
+    opacity: .35;
+
+}
+
+
+.birthday-message {
+
+    font-size: 20px;
+
+    line-height: 1.7;
+
+}
+
+
+.birthday-wish {
+
+    max-width: 600px;
+
+    margin: 20px auto;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    font-style: italic;
+
+}
+
+
+#continueButton {
+
+    opacity: 1;
+
+    animation: none;
+
+    margin-top: 30px;
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti-container {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+}
+
+
+.confetti-container span {
+
+    position: absolute;
+
+    top: -50px;
+
+    font-size: 28px;
+
+    animation:
+        fall 6s linear infinite;
+
+}
+
+
+.confetti-container span:nth-child(1) {
+
+    left: 10%;
+
+    animation-delay: 0s;
+
+}
+
+
+.confetti-container span:nth-child(2) {
+
+    left: 22%;
+
+    animation-delay: 1.5s;
+
+}
+
+
+.confetti-container span:nth-child(3) {
+
+    left: 35%;
+
+    animation-delay: .7s;
+
+}
+
+
+.confetti-container span:nth-child(4) {
+
+    left: 50%;
+
+    animation-delay: 2s;
+
+}
+
+
+.confetti-container span:nth-child(5) {
+
+    left: 65%;
+
+    animation-delay: .3s;
+
+}
+
+
+.confetti-container span:nth-child(6) {
+
+    left: 78%;
+
+    animation-delay: 1.2s;
+
+}
+
+
+.confetti-container span:nth-child(7) {
+
+    left: 88%;
+
+    animation-delay: 2.5s;
+
+}
+
+
+.confetti-container span:nth-child(8) {
+
+    left: 95%;
+
+    animation-delay: 1s;
+
+}
+
+
+@keyframes fall {
+
+    0% {
+
+        top: -50px;
+
+        transform:
+            rotate(0deg);
+
+        opacity: 0;
+
+    }
+
+    15% {
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        top: 110%;
+
+        transform:
+            rotate(360deg);
+
+        opacity: .8;
+
+    }
+
+}
+
+
+@keyframes birthdayAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.9)
+            translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+
+@keyframes birthdayFloat {
+
+    0%,
+    100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-12px);
+
+    }
+
+}
+/* =========================
+   LEARNING SCREEN
+========================= */
+
+.learning-screen {
+
+    min-height: 100vh;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f7f3ea,
+            #e8eee4,
+            #f3e9df
+        );
+
+    color: #3d3030;
+
+}
+
+
+.learning-content {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    padding: 60px 25px;
+
+}
+
+
+.section-label {
+
+    font-size: 13px;
+
+    letter-spacing: 4px;
+
+    opacity: .6;
+
+}
+
+
+.learning-content h1 {
+
+    margin: 15px 0;
+
+    font-size: clamp(
+        38px,
+        6vw,
+        65px
+    );
+
+    font-weight: normal;
+
+    opacity: 1;
+
+    animation: none;
+
+}
+
+
+.learning-intro {
+
+    max-width: 650px;
+
+    margin: 0 auto 45px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   LEARNING CARDS
+========================= */
+
+.learning-cards {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.learning-card {
+
+    padding: 30px 20px;
+
+    min-height: 250px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        .65
+    );
+
+    border: 1px solid rgba(
+        61,
+        48,
+        48,
+        .1
+    );
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, .06);
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+    animation:
+        cardAppear .8s ease both;
+
+}
+
+
+.learning-card:nth-child(1) {
+
+    animation-delay: .2s;
+
+}
+
+
+.learning-card:nth-child(2) {
+
+    animation-delay: .4s;
+
+}
+
+
+.learning-card:nth-child(3) {
+
+    animation-delay: .6s;
+
+}
+
+
+.learning-card:nth-child(4) {
+
+    animation-delay: .8s;
+
+}
+
+
+.learning-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, .12);
+
+}
+
+
+.card-icon {
+
+    font-size: 45px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.learning-card h2 {
+
+    margin: 5px 0 12px;
+
+    font-size: 25px;
+
+    font-weight: normal;
+
+}
+
+
+.learning-card p {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+#wordsButton {
+
+    opacity: 1;
+
+    animation: none;
+
+    margin-top: 45px;
+
+}
+
+
+/* =========================
+   CARD ANIMATION
+========================= */
+
+@keyframes cardAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .learning-cards {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .learning-cards {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .learning-content {
+
+        padding:
+            45px 18px;
+
+    }
+
+    .learning-card {
+
+        min-height: 220px;
+
+    }
+
+}
+/* Force learning cards into one horizontal row */
+
+.learning-cards {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px;
+    width: 100%;
+}
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.message-screen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.message-content {
+    width: 100%;
+    max-width: 800px;
+}
+
+.message-content h1 {
+    font-size: 48px;
+    margin: 15px 0 30px;
+}
+
+.final-message-card {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.final-message-card p {
+    margin: 0 0 20px;
+}
+
+.final-message-card .signature {
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+#finalButton {
+    margin-top: 30px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+/* =========================
+   FINAL MESSAGE
+========================= */
+
+.message-screen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.message-content {
+    width: 100%;
+    max-width: 800px;
+}
+
+.message-content h1 {
+    font-size: 48px;
+    margin: 15px 0 30px;
+}
+
+.final-message-card {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+.final-message-card p {
+    margin: 0 0 20px;
+}
+
+.final-message-card .signature {
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+#finalButton {
+    margin-top: 30px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+}
+/* =========================
+   FINAL SURPRISE
+========================= */
+
+.final-screen {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.final-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+.final-content h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.final-content p {
+    font-size: 19px;
+    line-height: 1.7;
+    margin: 12px 0;
+}
+
+.final-content h2 {
+    font-size: 25px;
+    margin-top: 30px;
+}
+
+.confetti {
+    font-size: 80px;
+    margin-bottom: 15px;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+.confetti-piece {
+    position: fixed;
+    top: -30px;
+    font-size: 22px;
+    z-index: 9999;
+    animation: fall 5s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
+.confetti-piece {
+    position: fixed;
+    top: -30px;
+    font-size: 22px;
+    z-index: 9999;
+    pointer-events: none;
+    animation: fall 5s linear forwards;
+}
+
+@keyframes fall {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(110vh) rotate(360deg);
+    }
+}
